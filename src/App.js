@@ -15,6 +15,8 @@ function TestLoop() {
   return (
     <>
       <h1>data</h1>
+      {/**for each do not give output its a consumer function*/}
+      {list.forEach((item) => item)}
       {list.map((item) => item)}
     </>
   );
