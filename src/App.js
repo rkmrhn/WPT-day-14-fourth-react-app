@@ -10,21 +10,26 @@ function App() {
 }
 // by clicking on a button we can add a statement
 function ListDemo() {
-  let data = "hello";
-  let [list, setList] = useState(["Delhi"]);
+  let [list, setList] = useState([""]);
 
-  let AddnewItem=()=>{
-    let newList=[...list ,"Mumbai"];
-    setList(newList);
-  }
+  let addItemAction = () => {
+    let itemref = document.querySelector("#id1");
+    let inputItem = itemref.value;
+    let newlist = [...list, inputItem];
+    setList(newlist);
+    itemref.value="";
+  };
 
   return (
     <>
-      <h1>{data}</h1>
-      <input type="button" value="add New" onClick={AddnewItem}/>
-
-      {list.map((item) => (
-        <h1>Hello {item}</h1>
+      <div>
+        <input type="text" placeholder="Enter..." id="id1" />
+      </div>
+      <div>
+        <input type="button" value="add" onClick={addItemAction} />
+      </div>
+      {list.map((item)=>(
+        <h1>{item}</h1>
       ))}
     </>
   );
