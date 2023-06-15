@@ -23,17 +23,22 @@ function AddItem() {
       <input type="text" ref={inputRef} placeholder="Enter user Input" />
       <input type="button" value="add" onClick={AddItemAction} />
       {list.map((item) => (
-        <div>
-          <h4>{item}</h4>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et, rerum
-            dicta architecto excepturi voluptatem necessitatibus perspiciatis
-            suscipit deserunt. Odit, at.
-          </p>
-          <input type="button" value="&#128077;" />
-          <input type="button" value="&#128078;" />
-        </div>
+        <MessageDemo message={item} />
       ))}
+    </>
+  );
+}
+function MessageDemo({ item }) {
+  return (
+    <>
+      <h1>{item}</h1>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et, rerum
+        dicta architecto excepturi voluptatem necessitatibus perspiciatis
+        suscipit deserunt. Odit, at.
+      </p>
+      <input type="button" value="&#128077;" />
+      <input type="button" value="&#128078;" />
     </>
   );
 }
