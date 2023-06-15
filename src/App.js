@@ -16,11 +16,11 @@ function AddItem() {
     let inputItem = inputRef.current.value;
     let newlist = [...list, inputItem];
     setList(newlist);
-    inputRef.current.value="";
+    inputRef.current.value = "";
   };
   return (
     <>
-      <input type="text" ref={inputRef} placeholder="Enter User inout..." />
+      <input type="text" ref={inputRef} placeholder="Enter User input..." />
       <input type="button" value="add" onClick={AddItemAction} />
       {list.map((item) => (
         <h3>{item}</h3>
