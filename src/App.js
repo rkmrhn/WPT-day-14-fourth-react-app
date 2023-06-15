@@ -20,10 +20,19 @@ function AddItem() {
   };
   return (
     <>
-      <input type="text" ref={inputRef} placeholder="Enter User input..." />
+      <input type="text" ref={inputRef} placeholder="Enter user Input" />
       <input type="button" value="add" onClick={AddItemAction} />
       {list.map((item) => (
-        <h3>{item}</h3>
+        <div>
+          <h4>{item}</h4>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et, rerum
+            dicta architecto excepturi voluptatem necessitatibus perspiciatis
+            suscipit deserunt. Odit, at.
+          </p>
+          <input type="button" value="&#128077;" />
+          <input type="button" value="&#128078;" />
+        </div>
       ))}
     </>
   );
