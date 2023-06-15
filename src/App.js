@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function App() {
   return (
     <>
@@ -6,31 +8,24 @@ function App() {
     </>
   );
 }
-// objective is to print a sentence n number of times
+// by clicking on a button we can add a statement
 function ListDemo() {
-  let data = "hello world";
-  let list = ["delhi", "mumbai", "kolkata", "lucknow"];
-  let list1 = [];
-  for (let i = 0; i < 100; i++) {
-    list1.push("");
+  let data = "hello";
+  let [list, setList] = useState(["Delhi"]);
+
+  let AddnewItem=()=>{
+    let newList=[...list ,"Mumbai"];
+    setList(newList);
   }
+
   return (
     <>
       <h1>{data}</h1>
-      {/**print hello world 4 times */}
-      <h1>
-        {list.map((item) => (
-          <div>{data}</div>
-        ))}
-      </h1>
+      <input type="button" value="add New" onClick={AddnewItem}/>
 
-      {/**print hello universe 100 times */}
-      <h1>
-        {" "}
-        {list1.map((item) => (
-          <div>hello universe</div>
-        ))}
-      </h1>
+      {list.map((item) => (
+        <h1>Hello {item}</h1>
+      ))}
     </>
   );
 }
