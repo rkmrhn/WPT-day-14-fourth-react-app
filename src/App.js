@@ -1,21 +1,23 @@
-import logo from "./logo.svg";
-import "./App.css";
-
 function App() {
   return (
     <>
-      <MessageDemo name="rohan" email="rohan@gmail.com"  />
-      <MessageDemo name="pankaj" email="pankaj@gmail.com" />
-      <MessageDemo name="shubham" email="shubham@gmail.com" />
+      <h1>Loop list</h1>
+      <TestLoop />
     </>
   );
 }
-function MessageDemo({name,email}){
-  return(
+function TestLoop() {
+  //stateless
+  let list = ["delhi", "mumbai", "kolkata", "lucknow"];
+  // stateful:
+  // let [list, setList] = ["delhi", "mumbai", "kolkata", "lucknow"];
+
+  return (
     <>
-    <h1>hello {name} {email}</h1>
+      <h1>data</h1>
+      {list.map((item) => item)}
     </>
-  )
+  );
 }
 
 export default App;
