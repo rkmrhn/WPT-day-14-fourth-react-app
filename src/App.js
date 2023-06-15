@@ -1,35 +1,29 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function App() {
   return (
     <>
-      <h1>demo</h1>
-      <ListDemo />
+      <h1>Demo</h1>
+      <AddItem />
     </>
   );
 }
-// by clicking on a button we can add a statement
-function ListDemo() {
-  let [list, setList] = useState([""]);
+function AddItem() {
+  let inputRef = useRef();
+  let [list, setList] = useState(["Hey"]);
 
-  let addItemAction = () => {
-    let itemref = document.querySelector("#id1");
-    let inputItem = itemref.value;
+  let AddItemAction = () => {
+    let inputItem = inputRef.current.value;
     let newlist = [...list, inputItem];
     setList(newlist);
-    itemref.value="";
+    inputRef.current.value="";
   };
-
   return (
     <>
-      <div>
-        <input type="text" placeholder="Enter..." id="id1" />
-      </div>
-      <div>
-        <input type="button" value="add" onClick={addItemAction} />
-      </div>
-      {list.map((item)=>(
-        <h1>{item}</h1>
+      <input type="text" ref={inputRef} placeholder="Enter User inout..." />
+      <input type="button" value="add" onClick={AddItemAction} />
+      {list.map((item) => (
+        <h3>{item}</h3>
       ))}
     </>
   );
