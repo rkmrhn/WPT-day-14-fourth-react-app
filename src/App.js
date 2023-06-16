@@ -9,7 +9,7 @@ function App() {
   );
 }
 function MultipleInput() {
-  let inputref = useRef();
+  let [successBox, setSuccessbox] = useState(false);
   let [todo, setTodo] = useState({ task: "", discription: "" });
 
   let handleChangeTaskAction = (e) => {
@@ -26,8 +26,13 @@ function MultipleInput() {
     let url = `http://localhost:4000/addTodo?task=${todo.task}&discription=${todo.discription}`;
     await fetch(url);
     //clear the box after adding
-    let newtodo={task:"",discription:""};
+    let newtodo = { task: "", discription: "" };
     setTodo(newtodo);
+    setSuccessbox(true);
+    //after 4000 miliseconds successBox will become again false
+    setTimeout(() => {
+      setSuccessbox(false);
+    }, 4000);
   };
   return (
     <>
@@ -35,7 +40,6 @@ function MultipleInput() {
         className="form-control"
         type="text"
         placeholder="Enter todo..."
-        ref={inputref}
         value={todo.task}
         onChange={handleChangeTaskAction}
       />
@@ -46,11 +50,13 @@ function MultipleInput() {
         cols="30"
         rows="3"
         placeholder="Enter Description"
-        ref={inputref}
         value={todo.discription}
         onChange={handleChangeDiscriptionAction}
       ></textarea>
       <input type="button" value="add todo" onClick={addItemAction} />
+      {successBox && (
+        <div className="alert alert-success">operation success</div>
+      )}
     </>
   );
 }
