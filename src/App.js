@@ -3,42 +3,30 @@ import { useRef, useState } from "react";
 function App() {
   return (
     <>
-      <h1>Demo</h1>
-      <AddItem />
+      <h1>Todo</h1>
+      <Inputbox />
     </>
   );
 }
-function AddItem() {
-  let inputRef = useRef();
-  let [list, setList] = useState(["Hey"]);
-
-  let AddItemAction = () => {
-    let inputItem = inputRef.current.value;
-    let newlist = [...list, inputItem];
-    setList(newlist);
-    inputRef.current.value = "";
+function Inputbox() {
+  let [todo, setTodo] = useState({ task: "" });
+  let handdleTheChange = (e) => {
+    let newTodo = { ...todo, task: e.target.value };
+    setTodo(newTodo);
   };
+  let addTodoAction = () => {
+    alert(todo.task);
+  };
+
   return (
     <>
-      <input type="text" ref={inputRef} placeholder="Enter user Input" />
-      <input type="button" value="add" onClick={AddItemAction} />
-      {list.map((item) => (
-        <MessageDemo message={item} />
-      ))}
-    </>
-  );
-}
-function MessageDemo({ item }) {
-  return (
-    <>
-      <h1>{item}</h1>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et, rerum
-        dicta architecto excepturi voluptatem necessitatibus perspiciatis
-        suscipit deserunt. Odit, at.
-      </p>
-      <input type="button" value="&#128077;" />
-      <input type="button" value="&#128078;" />
+      <input
+        type="text"
+        value={todo.task}
+        placeholder="Enter user input.."
+        onChange={handdleTheChange}
+      />
+      <input type="button" value="add Todo" onClick={addTodoAction} />
     </>
   );
 }
