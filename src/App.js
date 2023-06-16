@@ -20,8 +20,14 @@ function MultipleInput() {
     let newtodo = { ...todo, discription: e.target.value };
     setTodo(newtodo);
   };
-  let addItemAction = () => {
+  let addItemAction = async () => {
     console.log(todo);
+
+    let url = `http://localhost:4000/addTodo?task=${todo.task}&discription=${todo.discription}`;
+    await fetch(url);
+    //clear the box after adding
+    let newtodo={task:"",discription:""};
+    setTodo(newtodo);
   };
   return (
     <>
